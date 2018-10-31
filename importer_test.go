@@ -38,11 +38,17 @@ func TestImporter(t *testing.T) {
 	})
 
 	var count int
-	if i, err = NewImporter("./test_data", "tester", be, time.Hour, func(ts time.Time, a Action, msg []byte) (err error) {
+	if i, err = NewImporter("./test_data", "tester", be, time.Hour, func(ts time.Time, a Action, key, value []byte) (err error) {
 		count++
-		newMsg := fmt.Sprintf("#%d", count)
-		if string(msg) != newMsg {
-			return fmt.Errorf("invalid message, expected \"%s\" and received \"%s\"", newMsg, string(msg))
+		newKey := fmt.Sprintf("%d", count)
+		newVal := fmt.Sprintf("#%d", count)
+
+		if string(key) != newKey {
+			return fmt.Errorf("invalid key, expected \"%s\" and received \"%s\"", newKey, string(key))
+		}
+
+		if string(value) != newVal {
+			return fmt.Errorf("invalid message, expected \"%s\" and received \"%s\"", newVal, string(value))
 		}
 
 		return

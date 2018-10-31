@@ -27,6 +27,6 @@ type Importer struct {
 }
 
 func (i *Importer) handleImport(ts time.Time, line []byte) (err error) {
-	a, msg := parseLine(line)
-	return i.fn(ts, a, msg)
+	a, key, val := parseLine(line)
+	return i.fn(ts, a, key, val)
 }

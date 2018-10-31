@@ -33,29 +33,33 @@ type Actions struct {
 }
 
 // Log will log an action with a byteslice message
-func (a *Actions) Log(action Action, msg []byte) (err error) {
+func (a *Actions) Log(action Action, key, value []byte) (err error) {
 	// Create byteslice with action string
 	bs := []byte(action.String())
 	// Append separator
 	bs = append(bs, separator...)
-	// Append message
-	bs = append(bs, msg...)
+	// Append key
+	bs = append(bs, key...)
+	// Append separator
+	bs = append(bs, separator...)
+	// Append value
+	bs = append(bs, value...)
 	return a.Logger.Log(bs)
 }
 
 // LogString will log an action with a string message
-func (a *Actions) LogString(action Action, msg string) (err error) {
-	return a.Log(action, []byte(msg))
+func (a *Actions) LogString(action Action, key, value string) (err error) {
+	return a.Log(action, []byte(key), []byte(value))
 }
 
 // LogJSON will log an action with a JSON message
-func (a *Actions) LogJSON(action Action, msg interface{}) (err error) {
+func (a *Actions) LogJSON(action Action, key []byte, value interface{}) (err error) {
 	var bs []byte
-	if bs, err = json.Marshal(msg); err != nil {
+	if bs, err = json.Marshal(value); err != nil {
 		return
 	}
 
-	return a.Log(action, bs)
+	return a.Log(action, key, bs)
 }
 
 // Close will close an instance of Actions

@@ -31,7 +31,9 @@ func TestActions(t *testing.T) {
 
 func testPopulateActions(a *Actions, action Action, count, offset int) (err error) {
 	for i := 0; i < count; i++ {
-		if err = a.LogString(action, fmt.Sprintf("#%d", i+1+offset)); err != nil {
+		key := fmt.Sprintf("%d", i+1+offset)
+		value := fmt.Sprintf("#%d", i+1+offset)
+		if err = a.LogString(action, key, value); err != nil {
 			return
 		}
 	}

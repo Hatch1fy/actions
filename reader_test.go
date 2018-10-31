@@ -48,9 +48,9 @@ func TestReader(t *testing.T) {
 		}
 		defer r.Close()
 
-		return r.ForEach(0, func(ts time.Time, a Action, msg []byte) (err error) {
+		return r.ForEach(0, func(ts time.Time, a Action, key, value []byte) (err error) {
 			count++
-			return testReaderIteration(ts, a, msg, count)
+			return testReaderIteration(ts, a, key, value, count)
 		})
 	}); err != nil {
 		t.Fatal(err)
@@ -61,10 +61,16 @@ func TestReader(t *testing.T) {
 	}
 }
 
-func testReaderIteration(ts time.Time, a Action, msg []byte, count int) (err error) {
-	newMsg := fmt.Sprintf("#%d", count)
-	if string(msg) != newMsg {
-		return fmt.Errorf("invalid message, expected \"%s\" and received \"%s\"", string(msg), newMsg)
+func testReaderIteration(ts time.Time, a Action, key, value []byte, count int) (err error) {
+	newKey := fmt.Sprintf("%d", count)
+	newVal := fmt.Sprintf("#%d", count)
+
+	if string(key) != newKey {
+		return fmt.Errorf("invalid message, expected \"%s\" and received \"%s\"", newKey, string(key))
+	}
+
+	if string(value) != newVal {
+		return fmt.Errorf("invalid message, expected \"%s\" and received \"%s\"", newVal, string(value))
 	}
 
 	switch count {

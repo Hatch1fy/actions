@@ -25,8 +25,8 @@ type Reader struct {
 // ForEach will iterate through each line, starting at the offset
 func (r *Reader) ForEach(offset int64, fn Handler) (err error) {
 	err = r.r.ForEach(offset, func(ts time.Time, line []byte) (err error) {
-		a, msg := parseLine(line)
-		return fn(ts, a, msg)
+		a, key, value := parseLine(line)
+		return fn(ts, a, key, value)
 	})
 
 	return
