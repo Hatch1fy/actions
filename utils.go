@@ -16,7 +16,7 @@ func parseLine(line []byte) (a Action, key, value []byte) {
 	line = line[sepIndex+2:]
 
 	// Find second separator
-	sepIndex = bytes.Index(line, separator)
+	sepIndex = bytes.LastIndex(line, separator)
 	// Set key as bytes until separator
 	key = line[0:sepIndex]
 
