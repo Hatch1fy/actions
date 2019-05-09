@@ -86,7 +86,8 @@ func (a *Actions) Transaction(fn func(*Transaction) error) (err error) {
 		return
 	}
 
-	return
+	// Ensure logs have flushed to disk
+	return a.Flush()
 }
 
 // Close will close an instance of Actions
