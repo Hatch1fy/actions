@@ -32,6 +32,16 @@ type Actions struct {
 	*logger.Logger
 }
 
+func (a *Actions) logEntries(entries []transactionEntry) (err error) {
+	for _, entry := range entries {
+		if err = a.Log(entry.action, entry.key, entry.value); err != nil {
+			return
+		}
+	}
+
+	return
+}
+
 // Log will log an action with a byteslice message
 func (a *Actions) Log(action Action, key, value []byte) (err error) {
 	// Create byteslice with action string
@@ -60,6 +70,23 @@ func (a *Actions) LogJSON(action Action, key []byte, value interface{}) (err err
 	}
 
 	return a.Log(action, key, bs)
+}
+
+// Transaction will initialize a new logging transaction
+// Note: Logs will not flush until the transaction is closed without error
+func (a *Actions) Transaction(fn func(*Transaction) error) (err error) {
+	var txn Transaction
+	defer txn.close()
+
+	if err = fn(&txn); err != nil {
+		return
+	}
+
+	if err = a.logEntries(txn.entries); err != nil {
+		return
+	}
+
+	return
 }
 
 // Close will close an instance of Actions
