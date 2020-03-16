@@ -6,6 +6,8 @@ github.com/Hatch1fy/errors v0.3.0 h1:KylivctV7WFButh5rYOSHJUTi2gcalRgsGkAfFk1FsY
 github.com/Hatch1fy/errors v0.3.0/go.mod h1:SJFCeScmERvwtYMG7EU24Fe0KfXmiIs7tNlcIl0STKk=
 github.com/Hatch1fy/logger v0.3.3 h1:pPQDNFiO2SP+rwjEa4jf4kYEJVJetaISHi5qXaT28HQ=
 github.com/Hatch1fy/logger v0.3.3/go.mod h1:9wM0Hq7QqqBcSySdwLCmK3AmBsHyIlBUPeZK0p2cKWs=
+github.com/Hatch1fy/logger v0.3.4 h1:PzNp1WJb2BP/YH3ujwAwx3cIcWjgWclNjD1ln/kXsOg=
+github.com/Hatch1fy/logger v0.3.4/go.mod h1:KL4lgXyxWKMSTqj/EGGXVMSw+DGMkqkF5q7Eli1mgMg=
 github.com/Hatch1fy/pgutils v0.3.1 h1:Scaaz+0a5JpEcj1Sa5WaHHCGyCv8/+AuCSHiGFzf6sw=
 github.com/Hatch1fy/pgutils v0.3.1/go.mod h1:eATbgMrxlnFUEftwYorGR4/BAWbr1fH5xkVVqpu4YnA=
 github.com/Hatch1fy/snapshotter v0.3.2/go.mod h1:h052xNhThicYnhHtSxj2I6wWa6npGE1D8Uzx6ZoHOkc=
