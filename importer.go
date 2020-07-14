@@ -3,8 +3,8 @@ package actions
 import (
 	"time"
 
-	"github.com/Hatch1fy/logger"
-	"github.com/Hatch1fy/snapshotter"
+	"github.com/gdbu/logger"
+	"github.com/gdbu/snapshotter"
 )
 
 // NewImporter will return a new instance of importer

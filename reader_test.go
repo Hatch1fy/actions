@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Hatch1fy/snapshotter/backends"
+	"github.com/gdbu/snapshotter/backends"
 )
 
 func TestReader(t *testing.T) {

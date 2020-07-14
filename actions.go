@@ -3,7 +3,7 @@ package actions
 import (
 	"encoding/json"
 
-	"github.com/Hatch1fy/logger"
+	"github.com/gdbu/logger"
 )
 
 var (

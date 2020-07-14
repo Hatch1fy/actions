@@ -3,7 +3,7 @@ package actions
 import (
 	"time"
 
-	"github.com/Hatch1fy/logger"
+	"github.com/gdbu/logger"
 )
 
 // NewReader will return a new instance of reader

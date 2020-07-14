@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Hatch1fy/logger"
-	"github.com/Hatch1fy/snapshotter/backends"
+	"github.com/gdbu/logger"
+	"github.com/gdbu/snapshotter/backends"
 )
 
 func TestImporter(t *testing.T) {
