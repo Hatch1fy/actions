@@ -1,4 +1,4 @@
-module github.com/gdbu/actions
+module github.com/Hatch1fy/actions
 
 go 1.14
 
@@ -7,5 +7,3 @@ require (
 	github.com/gdbu/logger v0.4.82
 	github.com/gdbu/snapshotter v0.4.82
 )
-
-// *** Separate Local Deps *** \\
