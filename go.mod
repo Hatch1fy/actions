@@ -1,4 +1,4 @@
-module github.com/Hatch1fy/actions
+module github.com/gdbu/actions
 
 go 1.14
 
