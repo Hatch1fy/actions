@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/Hatch1fy/errors"
+	"github.com/hatchify/errors"
 )
 
 func TestActions(t *testing.T) {
