@@ -2,11 +2,8 @@ package actions
 
 import (
 	"fmt"
-	"path"
 	"testing"
 	"time"
-
-	"github.com/gdbu/snapshotter/backends"
 )
 
 func TestReader(t *testing.T) {
@@ -37,27 +34,6 @@ func TestReader(t *testing.T) {
 
 	if err = testPopulateActions(a, ActionDelete, 5, 10); err != nil {
 		t.Fatal(err)
-	}
-
-	var count int
-	be := backends.NewFile("./test_logs")
-	if err = be.ForEach("tester", "", 3, func(filename string) (err error) {
-		var r *Reader
-		if r, err = NewReader(path.Join("./test_logs", filename)); err != nil {
-			return
-		}
-		defer r.Close()
-
-		return r.ForEach(0, func(ts time.Time, a Action, key, value []byte) (err error) {
-			count++
-			return testReaderIteration(ts, a, key, value, count)
-		})
-	}); err != nil {
-		t.Fatal(err)
-	}
-
-	if count != 15 {
-		t.Fatalf("invalid count, expected %d and received %d", 15, count)
 	}
 }
 
